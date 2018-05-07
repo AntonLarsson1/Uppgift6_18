@@ -40,7 +40,7 @@ public class PriorityQueue<AnyType> implements Comparator{
 		return null;
 	}
 	
-	
+	//hej johannes
 	
 	@Override
 	public int compare(Object o1, Object o2) {
