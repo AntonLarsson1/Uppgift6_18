@@ -1,7 +1,8 @@
+package Uppgift6_18;
+
 import java.util.*;
 
-public class Graph
-	{
+public class Graph {
 	    public static final double INFINITY = Double.MAX_VALUE;
 	    private Map<String,Vertex> vertexMap = new HashMap<String,Vertex>();
 
@@ -87,9 +88,8 @@ public class Graph
 		      { name = nm; adj = new LinkedList<Edge>( ); reset( ); }
 
 		    public void reset( )
-		      { dist = Graph.INFINITY; prev = null; pos = null; scratch = 0; }    
-		      
-		    public PairingHeap.Position<Path> pos;  // Used for dijkstra2 (Chapter 23)
+		      { dist = Graph.INFINITY; prev = null; scratch = 0; }
+
 		}
 	    class Path implements Comparable<Path>
 		{
