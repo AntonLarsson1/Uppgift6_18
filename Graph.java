@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 public class Graph{
 	
+=======
+package Uppgift6_18;
+
+import java.util.*;
+
+public class Graph {
+>>>>>>> master
 	    public static final double INFINITY = Double.MAX_VALUE;
 	    private Map<String,Vertex> vertexMap = new HashMap<String,Vertex>();
 
@@ -61,6 +69,7 @@ public class Graph{
 		    public Vertex     prev;   // Previous vertex on shortest path
 		    public int        scratch;// Extra variable used in algorithm
 
+<<<<<<< HEAD
 		    public Vertex( String nm ){
 		    	name = nm;
 		    	adj = new LinkedList<Edge>( );
@@ -68,6 +77,14 @@ public class Graph{
 		    	}
 		   
 		    
+=======
+		    public Vertex( String nm )
+		      { name = nm; adj = new LinkedList<Edge>( ); reset( ); }
+
+		    public void reset( )
+		      { dist = Graph.INFINITY; prev = null; scratch = 0; }
+
+>>>>>>> master
 		}
 	    
 	    class Path implements Comparable<Path>{
