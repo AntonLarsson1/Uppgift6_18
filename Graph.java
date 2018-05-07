@@ -74,5 +74,51 @@ public class Graph
 	        for( Vertex v : vertexMap.values( ) )
 	            v.reset( );
 	    }
+	    
+	    class Vertex
+		{
+		    public String     name;   // Vertex name
+		    public List<Edge> adj;    // Adjacent vertices
+		    public double     dist;   // Cost
+		    public Vertex     prev;   // Previous vertex on shortest path
+		    public int        scratch;// Extra variable used in algorithm
+
+		    public Vertex( String nm )
+		      { name = nm; adj = new LinkedList<Edge>( ); reset( ); }
+
+		    public void reset( )
+		      { dist = Graph.INFINITY; prev = null; pos = null; scratch = 0; }    
+		      
+		    public PairingHeap.Position<Path> pos;  // Used for dijkstra2 (Chapter 23)
+		}
+	    class Path implements Comparable<Path>
+		{
+		    public Vertex     dest;   // w
+		    public double     cost;   // d(w)
+		    
+		    public Path( Vertex d, double c )
+		    {
+		        dest = d;
+		        cost = c;
+		    }
+		    
+		    public int compareTo( Path rhs )
+		    {
+		        double otherCost = rhs.cost;
+		        
+		        return cost < otherCost ? -1 : cost > otherCost ? 1 : 0;
+		    }
+		}
+	    class Edge
+		{
+		    public Vertex     dest;   // Second vertex in Edge
+		    public double     cost;   // Edge cost
+		    
+		    public Edge( Vertex d, double c )
+		    {
+		        dest = d;
+		        cost = c;
+		    }
+		}
 
 	}
