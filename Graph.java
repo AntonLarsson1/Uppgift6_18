@@ -10,17 +10,42 @@ public class Graph{
 	    /**
 	     * Add a new edge to the graph.
 	     */
-	    public void addEdge( String sourceName, String destName, double cost )
-	    {
-	        Vertex v = getVertex( sourceName );
-	        Vertex w = getVertex( destName );
-	        v.adj.add( new Edge( w, cost ) );
+	    public void addEdge( String sourceName, String destName, double cost ){
+	    	
+	        Vertex v = getVertex(sourceName);
+	        Vertex w = getVertex(destName);
+	        v.adj.add(new Edge(w, cost));
 	    }
+	    
 	    public void print(){
 	    	
+	    Iterator itr = vertexMap.keySet().iterator();
+	    
+	    while(itr.hasNext()){
+	    	
+	    	String keyy = (String) itr.next();
+	    	Vertex value = vertexMap.get(keyy);
+	    	
+	    List<Edge> hi = vertexMap.get(keyy).adj;
+	    
+	    System.out.println(value.name + " is connnected to:");
+	    System.out.println();
+	    
+	    Iterator<Edge> itte = hi.iterator();
+	    
+	    while(itte.hasNext()){
+	    	
+	    	Edge temm = itte.next();
+	    	System.out.println(temm.dest.name);
+	    }
+	    	System.out.println();
+	    	System.out.println("============================");
+	    			
+	    }
 	    	
 	    }
 	    
+	 
 	    public int size(){
 	    	
 	    	return vertexMap.size();
@@ -41,7 +66,7 @@ public class Graph{
 	    	return vertexMap.get(key);
 	    		
 	    }
-	    private Vertex getVertex( String vertexName ){
+	    private Vertex getVertex(String vertexName){
 	    	
 	        Vertex v = vertexMap.get(vertexName);
 	        if( v == null ){
@@ -65,7 +90,7 @@ public class Graph{
 		    public Vertex     prev;   // Previous vertex on shortest path
 		    public int        scratch;// Extra variable used in algorithm
 
-		    public Vertex( String nm ){
+		    public Vertex(String nm){
 		    	name = nm;
 		    	adj = new LinkedList<Edge>( );
 		
@@ -76,7 +101,7 @@ public class Graph{
 	    
 	    class Path implements Comparable<Path>{
 	    	
-		    public Vertex     dest;   // w
+		    public Vertex     dest;  // w
 		    public double     cost;   // d(w)
 		    
 		    public Path( Vertex d, double c )
@@ -97,7 +122,7 @@ public class Graph{
 		    public Vertex     dest;   // Second vertex in Edge
 		    public double     cost;   // Edge cost
 		    
-		    public Edge( Vertex d, double c )
+		    public Edge(Vertex d, double c)
 		    {
 		        dest = d;
 		        cost = c;
