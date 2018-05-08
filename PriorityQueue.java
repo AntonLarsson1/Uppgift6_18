@@ -1,52 +1,92 @@
-import java.util.Comparator;
 import java.util.*;
 import java.io.*;
-public class PriorityQueue<AnyType> implements Comparator{
-	private AnyType [] theArray; 
-	private int size;
+public class PriorityQueue implements Comparable{
+	
 	private int items;
-	public PriorityQueue(int size) {
-		items = 0;
-		this.size = size;
-		theArray = (AnyType[]) new Object[size];
+	ArrayList<Vertex> list;
+	
+	public PriorityQueue() {
+		list= new ArrayList();
+		list.add(null);
+		
 		
 	}
-	public boolean add(AnyType e) {
-		if(items==size) {
-			throw new IllegalArgumentException();
-			
-		}
-		
-		
-		return true;
-	}
-	public boolean contains(AnyType e) {
+	public boolean add(Vertex o) {
+		if(list.contains(o)) {
 		return false;
-	}
-	public boolean offer(AnyType e) {
-		if(items == size) {
-			System.out.println("Sorry dick, Queue is full");
-			return false;
 		}
+		list.add(o);
 		return true;
-	}
-	public void clear() {
 		
 	}
-	public AnyType peek() {
-		return null;
+	public void print() {
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 	}
-	public AnyType poll() {
-		return null;
+	public boolean isEmpty() {
+		return  list.size()==0;
+		
 	}
-	
-	//hej johannes
-	
+	public boolean MakeEmpty() {
+		list.removeAll(list);
+		return list.size()==0;
+		
+	}
+	public Vertex peek() {
+		return  list.get(1);
+		
+	}
+	public Vertex pull() {
+		if(isEmpty()) {
+			return null;
+		}
+		return list.remove(1);
+		
+	}
+	public void Heap(int n) {
+		int size = list.size();
+		int child = n;
+		int i = n;
+		int parent=child/2;
+		Object last = list.get(n);
+		while(2*i<=size) {
+			child = 2*i;
+			
+			if(child<size && parent < child) {
+//				int tempInd = (int) list.get(parent);//index for parent
+//				int tempInd2 = (int) list.get(child); // index for child
+//				list.set(tempInd, 1);
+//				list.set(tempInd2, 2);
+			}
+		}
+	}
+	public static void main(String[]cmdLn) {
+		PriorityQueue q = new PriorityQueue();
+		Graph h = new Graph();
+		Vertex v = new Vertex("Göteborg");
+		
+		
+
+	}
 	@Override
-	public int compare(Object o1, Object o2) {
+	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
+//class distance implements Comparator<PriorityQueue>{  // Comparator that sorts by population
+//	@Override
+//	public int compare(PriorityQueue o1, PriorityQueue o2) {
+//		// TODO Auto-generated method stub
+//		return  (int)(o1.schabla() - (o2.schabla()));  // sorts so we can print out the land with biggest population first
+//	}
+//}
+//class time implements Comparator<PriorityQueue>{ // Comparator that compares land, alphabetical
+//	
+//	public int compare(PriorityQueue o1, PriorityQueue o2) {
+//		// TODO Auto-generated method stub
+//		return (int)o1.time() - (o2.time());  // compares Land object o1 with Land o2
+//	}
+//}
 
